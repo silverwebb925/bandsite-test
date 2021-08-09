@@ -12,11 +12,15 @@ collections:
     editor:
       preview: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Blog Posts', name: 'posts', widget: 'list' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Video', name: 'video', widget: 'file' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - label: 'Featured Content'
+        name: "content"
+        widget: "relation"
+        collection: "blog"
+        search_fields: ["video", "description"]
+        value_field: "video"
+        display_fields: ["Title", "Description"]
   - name: 'blog'
     label: 'Blog'
     folder: 'content/blog'
@@ -27,5 +31,7 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Featured Image', name: 'thumbnail', widget: 'image' }
       - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Video', name: 'video', widget: 'file' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
